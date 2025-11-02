@@ -37,13 +37,13 @@
             <fileMode>0755</fileMode>
             <filtered>true</filtered>
             <outputDirectory></outputDirectory>
-            <source>${project.basedir}/plugin-conf/plugin-descriptor.properties</source>
+            <source>${project.basedir}/src/main/resources/plugin-descriptor.properties</source>
         </file>
         <file>
             <fileMode>0755</fileMode>
             <filtered>true</filtered>
             <outputDirectory></outputDirectory>
-            <source>${project.basedir}/plugin-conf/plugin-security.policy</source>
+            <source>${project.basedir}/src/main/resources/plugin-security.policy</source>
         </file>
     </files>
     <formats>
