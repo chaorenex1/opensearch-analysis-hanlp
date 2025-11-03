@@ -1,5 +1,10 @@
 FROM hub.icert.top/opensearchproject/opensearch:latest
 
+ENV TZ=Asia/Shanghai
+ENV LANG=C.UTF-8
+ENV LC_ALL=C.UTF-8
+ENV JAVA_TOOL_OPTIONS="-Dfile.encoding=UTF-8"
+
 # 使用 root 安装插件
 USER root
 
