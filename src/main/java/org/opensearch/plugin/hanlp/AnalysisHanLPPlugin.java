@@ -32,7 +32,7 @@ public class AnalysisHanLPPlugin extends Plugin implements AnalysisPlugin {
      * Hanlp配置文件名
      */
     public static final String CONFIG_FILE_NAME = "hanlp.properties";
-    public static String PLUGIN_NAME = "analysis-hanlp";
+    public static String PLUGIN_NAME = "opensearch-analysis-hanlp";
 
     public AnalysisHanLPPlugin(Settings settings) {
         String home = null;

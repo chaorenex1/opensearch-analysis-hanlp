@@ -12,10 +12,10 @@ RUN /usr/share/opensearch/bin/opensearch-plugin install file:///tmp/analysis-han
   && chown -R opensearch:opensearch /usr/share/opensearch/plugins/opensearch-analysis-hanlp
 
 
-RUN mkdir -p /usr/share/opensearch/config/analysis-hanlp \
+RUN mkdir -p /usr/share/opensearch/config/opensearch-analysis-hanlp \
   && ls -l /usr/share/opensearch/plugins/opensearch-analysis-hanlp \
-  && cp -r /usr/share/opensearch/plugins/opensearch-analysis-hanlp/config/* /usr/share/opensearch/config/analysis-hanlp/ \
-  && chown -R opensearch:opensearch /usr/share/opensearch/config/analysis-hanlp
+  && cp -r /usr/share/opensearch/plugins/opensearch-analysis-hanlp/config/* /usr/share/opensearch/config/opensearch-analysis-hanlp/ \
+  && chown -R opensearch:opensearch /usr/share/opensearch/config/opensearch-analysis-hanlp
 
 # 切回非特权用户
 USER opensearch
