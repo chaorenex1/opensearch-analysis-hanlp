@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# 构建 OpenSearch HanLP 插件的 Docker 镜像
 # 配置项（根据需要修改）
 IMAGE_NAME="opensearch-hanlp"
 
@@ -13,6 +14,9 @@ warn() { echo -e "${YELLOW}[WARN]${NC} $*"; }
 err() { echo -e "${RED}[ERROR]${NC} $*"; }
 
 trap 'err "部署失败"; exit 1' ERR
+
+log "开始构建项目包"
+./mvnw clean package -DskipTests
 
 log "开始构建镜像 ${IMAGE_NAME}"
 
