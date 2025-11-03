@@ -9,13 +9,7 @@ COPY ./target/releases/analysis-hanlp.zip /tmp/analysis-hanlp.zip
 # 安装插件、清理临时文件并修正权限
 RUN /usr/share/opensearch/bin/opensearch-plugin install file:///tmp/analysis-hanlp.zip --batch \
   && rm /tmp/analysis-hanlp.zip \
-  && chown -R opensearch:opensearch /usr/share/opensearch/plugins/opensearch-analysis-hanlp
-
-
-RUN mkdir -p /usr/share/opensearch/config/opensearch-analysis-hanlp \
-  && ls -l /usr/share/opensearch/plugins/opensearch-analysis-hanlp \
-  && cp -r /usr/share/opensearch/plugins/opensearch-analysis-hanlp/config/* /usr/share/opensearch/config/opensearch-analysis-hanlp/ \
+  && chown -R opensearch:opensearch /usr/share/opensearch/plugins/opensearch-analysis-hanlp \
   && chown -R opensearch:opensearch /usr/share/opensearch/config/opensearch-analysis-hanlp
-
 # 切回非特权用户
 USER opensearch
