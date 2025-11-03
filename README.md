@@ -7,5 +7,5 @@ This plugin integrates the HanLP natural language processing library into OpenSe
 
 # building the Plugin
 ```bash
-sudo bash ./deploy/build.sh
+bash ./deploy/build.sh
 ```
