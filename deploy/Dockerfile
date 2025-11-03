@@ -1,4 +1,4 @@
-FROM hub.icert.top/opensearchproject/opensearch:latest
+FROM opensearchproject/opensearch:latest
 
 ENV TZ=Asia/Shanghai
 ENV LANG=C.UTF-8
