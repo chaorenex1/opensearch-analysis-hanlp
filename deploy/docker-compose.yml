@@ -1,0 +1,61 @@
+services:
+  opensearch01:
+    container_name: opensearch-01
+    profiles:
+      - opensearch
+    image: opensearch-hanlp:latest
+    volumes:
+      - opensearch-data1:/usr/share/opensearch/data
+    ports:
+      - ${OS_PORT}:9200
+      - 9600:9600
+    env_file: .env
+    environment:
+      - node.name=opensearch01
+      - OPENSEARCH_PASSWORD=${OPENSEARCH_PASSWORD}
+      - OPENSEARCH_INITIAL_ADMIN_PASSWORD=${OPENSEARCH_PASSWORD}
+      - bootstrap.memory_lock=false
+      - discovery.type=single-node
+      - plugins.security.disabled=false
+      - plugins.security.ssl.http.enabled=false
+      - plugins.security.ssl.transport.enabled=true
+      - cluster.routing.allocation.disk.watermark.low=5gb
+      - cluster.routing.allocation.disk.watermark.high=3gb
+      - cluster.routing.allocation.disk.watermark.flood_stage=2gb
+      - TZ=${TIMEZONE}
+      - http.port=9200
+    mem_limit: ${MEM_LIMIT}
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+      nofile:
+        soft: 65536
+        hard: 65536
+    healthcheck:
+      test: [ "CMD-SHELL", "curl http://localhost:9200" ]
+      interval: 10s
+      timeout: 10s
+      retries: 120
+    networks:
+      - opensearch-net
+    restart: unless-stopped
+
+  opensearch-dashboards:
+    image: hub.icert.top/opensearchproject/opensearch-dashboards:latest # Make sure the version of opensearch-dashboards matches the version of opensearch installed on other nodes
+    container_name: opensearch-dashboards
+    ports:
+      - 5601:5601 # Map host port 5601 to container port 5601
+    expose:
+      - "5601" # Expose port 5601 for web access to OpenSearch Dashboards
+    environment:
+      OPENSEARCH_HOSTS: '["https://opensearch-01:9200"]' # Define the OpenSearch nodes that OpenSearch Dashboards will query
+    networks:
+      - opensearch-net
+    restart: unless-stopped
+
+volumes:
+  opensearch-data1:
+
+networks:
+  opensearch-net:
