@@ -1,8 +1,6 @@
 services:
   opensearch01:
     container_name: opensearch-01
-    profiles:
-      - opensearch
     image: opensearch-hanlp:latest
     volumes:
       - opensearch-data1:/usr/share/opensearch/data
