@@ -16,7 +16,7 @@ err() { echo -e "${RED}[ERROR]${NC} $*"; }
 trap 'err "部署失败"; exit 1' ERR
 
 log "开始构建项目包"
-./mvnw clean package -DskipTests
+bash mvnw clean package -DskipTests
 
 log "开始构建镜像 ${IMAGE_NAME}"
 
