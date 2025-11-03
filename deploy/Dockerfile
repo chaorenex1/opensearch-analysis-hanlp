@@ -1,4 +1,4 @@
-FROM opensearchproject/opensearch:latest
+FROM hub.icert.top/opensearchproject/opensearch:latest
 
 # 复制由 mvn 打包生成的插件 zip 到镜像
 COPY target/releases/analysis-hanlp.zip /tmp/analysis-hanlp.zip

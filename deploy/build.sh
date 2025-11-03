@@ -30,6 +30,6 @@ log "当前镜像标签 ${IMAGE_TAG}"
 
 # 构建新镜像
 log "构建镜像 ${IMAGE_TAG}"
-docker build -t "${IMAGE_TAG}" .
+docker build -t "${IMAGE_TAG}" -f ./deploy/Dockerfile .
 
 log "构建完成：镜像=${IMAGE_TAG}"
